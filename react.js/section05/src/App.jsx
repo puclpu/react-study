@@ -2,14 +2,25 @@ import './App.css'
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
+import Button from './components/Button';
 
 function App() { // 부모 컴퍼넌트
+  const buttonProps = {
+    text: "메일",
+    color: "red",
+    a: 1,
+    b: 2,
+    c: 3,
+  };
+
   return (
     <>
-      {/* App 컴퍼넌트를 랜더링할 때, Header 컴퍼넌트도 함께 렌더링 됨 */}
-      <Header />
-      <Main />
-      <Footer />
+      <Button {...buttonProps} />
+      <Button text={"카페"} />
+      <Button text={"블로그"}>
+        <div>자식요소</div>
+        <Header />
+      </Button>
     </>
   )
 }
