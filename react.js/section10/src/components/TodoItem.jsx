@@ -20,19 +20,4 @@ const TodoItem = ({id, isDone, content, date, onUpdate, onDelete}) => {
     );
 };
 
-// 고차 컴포넌트 (HOC)
-export default memo(TodoItem, (prevProps, nextProps)=>{
-    // 현재 props와 과거 props를 직접 비교
-    // 왜? 함수 같은 객체 타입은 얕은 비교로 무조건 다르다고 판단하기 때문
-    // -> 반환값에 따라, Props가 바뀌었는지 안 바뀌었는지 판단
-    // T -> Props 바뀌지 않음 -> 리렌더링 x
-    // F -> Props 바뀜 -> 리렌더링 o
-
-    if (prevProps.id !== nextProps.id) return false;
-    if (prevProps.isDone !== nextProps.isDone) return false;
-    if (prevProps.content !== nextProps.content) return false;
-    if (prevProps.date !== nextProps.date) return false;
-
-    return true;
-
-}); // 콜백 함수 최적화
+export default memo(TodoItem);
